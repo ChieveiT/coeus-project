@@ -1,0 +1,7 @@
+path: '/'
+componentsPath: './components'
+components: ':Navigator'
+children:
+  - components: ':Hello'
+  - path: 'another'
+    components: ':Another'
