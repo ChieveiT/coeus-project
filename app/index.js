@@ -4,6 +4,7 @@ import Router from 'coeus';
 import routes from './routes.yml';
 
 require('normalize.css');
+require('./assets/scss/global.scss')
 
 let middlewares = [
   function(action, next) {

@@ -1,11 +1,23 @@
 import React from 'react';
 import { storeShape } from 'coeus/lib/types';
 import State from './State';
+import style from '../assets/scss/navigator.scss';
+import { Motion, spring, presets } from 'react-motion';
 
 class Navigator extends React.Component {
+  componentWillMount() {
+    // init
+    this.setState({
+      position: { x: 0, y: 0 }
+    });
+
+    this.isPressed = false;
+    window.addEventListener('mousemove', this.handleMouseMove.bind(this));
+    window.addEventListener('mouseup', this.handleMouseUp.bind(this));
+  }
+
   route(path) {
     let store = this.context.store;
-    console.log(store.getState());
 
     return function () {
       store.dispatch({
@@ -14,12 +26,36 @@ class Navigator extends React.Component {
     }
   }
 
+  handleMouseDown({ x, y }, { pageX, pageY }) {
+    this.isPressed = true;
+    this.offsetX = pageX - x;
+    this.offsetY = pageY - y;
+  }
+
+  handleMouseMove({ pageX, pageY }) {
+    if (this.isPressed) {
+      this.setState({
+        position: {
+          x: pageX - this.offsetX,
+          y: pageY - this.offsetY
+        }
+      });
+    }
+  }
+
+  handleMouseUp() {
+    this.isPressed = false;
+
+    // trigger render for starting motion
+    this.forceUpdate();
+  }
+
   render() {
     return (
       <div>
         <State />
 
-        <ul>
+        <ul className={style.header}>
           <li onClick={this.route('/')}>
             {'index'}
           </li>
@@ -31,7 +67,27 @@ class Navigator extends React.Component {
           </li>
         </ul>
 
-        {this.props.children}
+        <Motion
+          style={
+            this.isPressed ? this.state.position : {
+              x: spring(0, presets.gentle),
+              y: spring(0, presets.gentle)
+            }
+          }
+        >
+          {({ x, y }) => (
+            <div
+              className={style.body}
+              style={{
+                transform: `translate3d(${x}px, ${y}px, 0)`,
+                WebkitTransform: `translate3d(${x}px, ${y}px, 0)`
+              }}
+              onMouseDown={this.handleMouseDown.bind(this, { x, y })}
+            >
+              {this.props.children}
+            </div>
+          )}
+        </Motion>
       </div>
     );
   }

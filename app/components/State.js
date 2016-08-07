@@ -1,11 +1,7 @@
 import React from 'react';
 import { storeShape } from 'coeus/lib/types';
-import TreeView from 'react-treeview';
-import isPlainObject from 'lodash/isPlainObject';
-import isArray from 'lodash/isArray';
-import map from 'lodash/map';
-
-require('react-treeview/react-treeview.css');
+import TreeView from './TreeView';
+import style from '../assets/scss/State.scss';
 
 function isClass(v) {
   return typeof v === 'function' && v.prototype.constructor === v;
@@ -22,69 +18,64 @@ class State extends React.Component {
     // init
     this.setState({
       tree: {},
-      collapsed: []
+      position: { x: 0, y: 0 }
     });
 
     store.initState();
+
+    // for header
+    this.isPressed = false;
+    window.addEventListener('mousemove', this.handleMouseMove.bind(this));
+    window.addEventListener('mouseup', this.handleMouseUp.bind(this));
   }
 
   componentWillUnmount() {
     this.unsubscribe();  
   }
 
-  toggle(key) {
-    let collapsed = this.state.collapsed;
-    let value = !collapsed[key];
-
-    this.setState({
-      collapsed: { ...collapsed, key: value }
-    });
+  handleMouseDown({ x, y }, { pageX, pageY }) {
+    this.isPressed = true;
+    this.offsetX = pageX - x;
+    this.offsetY = pageY - y;
   }
 
-  renderTree(node, keyTrace = []) {
-    if (!(isPlainObject(node) || isArray(node))) {
-      return node;
-    }
-
-    return map(node, (value, key) => {
-      const flattenKey = [ ...keyTrace, key ];
-      const flattenKeyStr = flattenKey.join('.');
-
-      if (isPlainObject(value) || isArray(value)) {
-        const label = (
-          <span className="node" onClick={
-            this.toggle.bind(this, flattenKeyStr)
-          }>
-            {key}
-          </span>
-        );
-        const collapsed = this.state.collapsed[flattenKeyStr];
-
-        return (
-          <TreeView
-            key={key}
-            nodeLabel={label}
-            collapsed={collapsed}
-          >
-            {this.renderTree(value, flattenKey)}
-          </TreeView>
-        );
-      } else {
-        if (isClass(value)) {
-          value = `class ${value.name}`;
+  handleMouseMove({ pageX, pageY }) {
+    if (this.isPressed) {
+      this.setState({
+        position: {
+          x: pageX - this.offsetX,
+          y: pageY - this.offsetY
         }
+      });
+    }
+  }
 
-        return (
-          <div className="node" key={key}>
-            {`${key}: ${value}`}
-          </div>
-        );
-      }
-    });
+  handleMouseUp() {
+    this.isPressed = false;
   }
 
   render() {
-    return <div>{this.renderTree(this.state.tree)}</div>;
+    let { tree, position: { x, y } } = this.state;
+
+    return (
+      <div
+        className={style.background}
+        style={{
+          transform: `translate3d(${x}px, ${y}px, 0)`,
+          WebkitTransform: `translate3d(${x}px, ${y}px, 0)`
+        }}
+      >
+        <div
+          className={style.header}
+          onMouseDown={this.handleMouseDown.bind(this, { x, y })}
+        >
+          {'State'}
+        </div>
+        <div className={style.body}>
+          <TreeView tree={tree} />
+        </div>
+      </div>
+    );
   }
 }
 

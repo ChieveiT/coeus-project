@@ -1,0 +1,45 @@
+:local(.header) {
+  margin: 300px 0 0 0;
+  padding: 0;
+
+  text-decoration: none;
+  text-align: center;
+  font-size: 30px;
+
+  li {
+    display: inline-block;
+    margin: 3px;
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  li:nth-child(1) {
+    background: #60a917;
+  }
+  li:nth-child(2) {
+    background: #f0a30a;
+  }
+  li:nth-child(3) {
+    background: #00ccff;
+  }
+}
+
+:local(.body) {
+  background: #da5a53;
+  margin: 3px auto;
+  width: 612px;
+  height: 300px;
+
+  &:hover {
+    cursor: move;
+  }
+
+  text-align: center;
+  font-size: 50px;
+  line-height: 300px;
+}

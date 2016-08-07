@@ -1,0 +1,49 @@
+:local(.node) {
+  height: 25px;
+  color: #6cb3d4;
+
+  &:hover {
+    background: #3f434d;
+    cursor: pointer;
+  }
+
+  :local(.arrow) {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 6px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:after {
+      content: '▾';
+    }
+  }
+
+  /* rotate the triangle to close it */
+  :local(.arrowCollapsed) {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+
+  :local(.label) {
+    color: #8bac50;
+  }
+}
+
+:local(.value) {
+  color: #e9eaeb;
+}
+
+:local(.children) {
+  margin-left: 16px;
+}
+
+:local(.leaf) {
+  margin-left: 16px;
+  height: 25px;
+  color: #6cb3d4;
+}
