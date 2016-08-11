@@ -1,6 +1,6 @@
 # coeus-project
 
-Project Template for Coeus
+Project Template for Coeus. A living welcome page is [here](http://103.238.224.51/).
 
 ## Quick Start
 
