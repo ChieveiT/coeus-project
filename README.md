@@ -1,6 +1,6 @@
 # coeus-project
 
-Project Template for Coeus. A living welcome page is [here](http://103.238.224.51/).
+Project Template for Coeus. A living welcome page is [here](http://103.238.224.51:3001/).
 
 ## Quick Start
 
@@ -8,7 +8,7 @@ Project Template for Coeus. A living welcome page is [here](http://103.238.224.5
 * Unzip the project and rename the project to what you want.
 * Install deps.
 ```shell
-cd ${project_name}
+cd ${project_path}
 npm install
 ```
 * Run server for development.
@@ -46,3 +46,13 @@ Additionally, as coeus's Router can not handle 404 land page correctly, some lit
 >404 is a state in coeus's Router rather than a page, which is a good design to escape depressing traps allowing 404 path pushing in history. Well, a deeper concern is token into my account of course. I am always trying to make coeus app be a true client application completely based on data state. That's the core. All components should work fine depending on state, a clear data structure which we can read and test easiy. Once coeus is loaded and up, all changes among components including errors and exceptions should be shown in state, not actions, not default pages, not conventional behaviors which is hard to be expected and controlled. Everything will be extremely clean and free if you expose some public data rather than some weird interfaces. So just expose state and listen to them. Components relate to each other in such a simple way!
 
 The server is written simply as a demo now. And if you are looking for a manager to make server run in daemon which is a real demand in real production environment, [pm2](https://github.com/Unitech/pm2) is recommended.
+
+Something like this:
+```shell
+npm install -g pm2
+cd ${project_path}
+# start service
+pm start server/production.js
+# add auto start script to your platform
+pm startup
+```
