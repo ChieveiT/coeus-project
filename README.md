@@ -37,6 +37,7 @@ No react, but [react-lite](https://github.com/Lucifier129/react-lite) recommende
 A default production server(powered by [koajs](http://koajs.com/)) is provided to response static resources and your coeus app.
 
 ```shell
+# listening on port 3001
 npm run production
 ```
 
