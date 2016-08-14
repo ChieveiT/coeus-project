@@ -31,7 +31,7 @@ module.exports = {
   },
   output: {
     path: __dirname + '/build',
-    publicPath: 'http://localhost:3001/',
+    publicPath: '/',
     filename: '[name].entry.js',
     chunkFilename: '[id].chunk.js'
   },
