@@ -1,7 +1,7 @@
 import React from 'react';
 import { storeShape } from 'coeus/lib/types';
 import State from './State';
-import style from '../assets/scss/navigator.scss';
+import style from '../assets/scss/Navigator.scss';
 import { Motion, spring, presets } from 'react-motion';
 
 class Navigator extends React.Component {
