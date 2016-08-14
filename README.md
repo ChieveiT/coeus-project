@@ -30,7 +30,7 @@ As you can see in `webpack.development.js`, hot reload is on. If you use linux, 
 ```shell
 npm run build
 ```
-No react, but [react-lite](https://github.com/Lucifier129/react-lite) recommended.
+No react, but [react-lite](https://github.com/Lucifier129/react-lite).
 
 ## Production Server
 
