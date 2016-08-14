@@ -52,7 +52,7 @@ Something like this:
 npm install -g pm2
 cd ${project_path}
 # start service
-pm start server/production.js
+pm2 start server/production.js
 # add auto start script to your platform
-pm startup
+pm2 startup
 ```
