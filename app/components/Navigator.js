@@ -1,5 +1,5 @@
 import React from 'react';
-import { storeShape } from 'coeus/lib/types';
+import { storeShape } from 'coeux/lib/types';
 import State from './State';
 import style from '../assets/scss/Navigator.scss';
 import { Motion, spring, presets } from 'react-motion';

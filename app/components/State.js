@@ -1,5 +1,5 @@
 import React from 'react';
-import { storeShape } from 'coeus/lib/types';
+import { storeShape } from 'coeux/lib/types';
 import TreeView from './TreeView';
 import style from '../assets/scss/State.scss';
 

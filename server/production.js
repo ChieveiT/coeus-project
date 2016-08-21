@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 var yamlL = require('yaml-loader');
-var routesL = require('coeus/lib/utils/routes-loader');
+var routesL = require('coeus-router/lib/routes-loader');
 var js_beautify = require('js-beautify').js_beautify;
 function beautify(content) {
   return js_beautify(content, { indent_size: 2 });

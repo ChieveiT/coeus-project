@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Router from 'coeus';
+import Router from 'coeus-router';
 import routes from './routes.yml';
 
 require('normalize.css');

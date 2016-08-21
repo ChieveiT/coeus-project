@@ -20,7 +20,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
-      { test: /routes\.yml$/, loaders: ['coeus/lib/utils/routes-loader', 'yaml'] },
+      { test: /routes\.yml$/, loaders: ['coeus-router/lib/routes-loader', 'yaml'] },
       { test: /\.css$/, loaders: ['style', 'css'] },
       { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
       { test: /\.(png|jpg|gif)$/, loaders: ['url?limit=10000'] }
