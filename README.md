@@ -4,9 +4,9 @@ Project Template for Coeus. A living welcome page is [here](http://103.238.224.5
 
 ## Quick Start
 
-* Download zip from the master branch.
+* Download zip from the master branch. (If you are a chinese user, there is a version with all deps which have been installed in branch [master-with-deps](https://github.com/ChieveiT/coeus-project/tree/master-with-deps). Well, fuck GFW.)
 * Unzip the project and rename the project to what you want.
-* Install deps.
+* Install deps. (skip when using `master-with-deps`)
 ```shell
 cd ${project_path}
 npm install
