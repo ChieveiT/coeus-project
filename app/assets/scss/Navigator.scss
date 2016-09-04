@@ -6,7 +6,7 @@
   text-align: center;
   font-size: 30px;
 
-  li {
+  a {
     display: inline-block;
     margin: 3px;
     width: 200px;
@@ -18,13 +18,13 @@
     }
   }
 
-  li:nth-child(1) {
+  a:nth-child(1) {
     background: #60a917;
   }
-  li:nth-child(2) {
+  a:nth-child(2) {
     background: #f0a30a;
   }
-  li:nth-child(3) {
+  a:nth-child(3) {
     background: #00ccff;
   }
 }

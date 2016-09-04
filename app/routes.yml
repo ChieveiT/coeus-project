@@ -5,3 +5,4 @@ children:
   - components: ':Hello'
   - path: 'another'
     components: ':Another'
+    name: 'another'

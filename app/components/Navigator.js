@@ -2,6 +2,7 @@ import React from 'react';
 import { storeShape } from 'coeux/lib/types';
 import State from './State';
 import style from '../assets/scss/Navigator.scss';
+import Link from 'coeus-router/lib/Link';
 import { Motion, spring, presets } from 'react-motion';
 
 class Navigator extends React.Component {
@@ -55,17 +56,11 @@ class Navigator extends React.Component {
       <div>
         <State />
 
-        <ul className={style.header}>
-          <li onClick={this.route('/')}>
-            {'index'}
-          </li>
-          <li onClick={this.route('/another')}>
-            {'another'}
-          </li>
-          <li onClick={this.route('/not_found')}>
-            {'not_found'}
-          </li>
-        </ul>
+        <div className={style.header}>
+          <Link path={'/'}>{'index'}</Link>
+          <Link name={'another'}>{'another'}</Link>
+          <Link path={'/not_found'}>{'not_found'}</Link>
+        </div>
 
         <Motion
           style={
