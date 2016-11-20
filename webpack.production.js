@@ -46,6 +46,6 @@ module.exports = {
       filename: "commons.js",
       minChunks: 2,
     }),
-    new webpack.optimize.UglifyJsPlugin()
+    //new webpack.optimize.UglifyJsPlugin()
   ]
 };
