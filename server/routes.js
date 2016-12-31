@@ -12,11 +12,11 @@ module.exports = {
       });
     }
   }, {
-    "path": "another",
+    "path": "another_<k2:\\w+>",
     "components": [":Another"],
     "name": "another",
-    "_path": "another",
-    "_params": [],
+    "_path": "another_(\\w+)",
+    "_params": ["k2"],
     "_components": function _components() {
       return new Promise(function(resolve) {
         require.ensure([], function(require) {
@@ -170,9 +170,13 @@ module.exports = {
   },
   "_names": {
     "another": {
-      "pathTemplate": "/another",
-      "paramsRegex": {},
-      "paramsOptional": {}
+      "pathTemplate": "/another_<k2>",
+      "paramsRegex": {
+        "k2": "\\w+"
+      },
+      "paramsOptional": {
+        "k2": false
+      }
     }
   },
   "linkByName": function linkByName(name, args) {

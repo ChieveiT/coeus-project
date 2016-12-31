@@ -57,8 +57,8 @@ class Navigator extends React.Component {
         <State />
 
         <div className={style.header}>
-          <Link path={'/'}>{'index'}</Link>
-          <Link name={'another'}>{'another'}</Link>
+          <Link path={'/'} args={{ k1: 'v1' }}>{'index'}</Link>
+          <Link name={'another'} args={{ k2: 'v2' }}>{'another'}</Link>
           <Link path={'/not_found'}>{'not_found'}</Link>
         </div>
 

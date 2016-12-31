@@ -1,8 +1,8 @@
-path: '/'
-componentsPath: './components'
+path: /
+componentsPath: ./components
 components: ':Navigator'
 children:
   - components: ':Hello'
-  - path: 'another'
+  - path: 'another_<k2:\w+>'
     components: ':Another'
-    name: 'another'
+    name: another

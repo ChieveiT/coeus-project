@@ -50,7 +50,7 @@ class TreeView extends React.Component {
           }
         }
 
-        const collapsed = this.state.collapsed[_flattenKeyStr];
+        const collapsed = !this.state.collapsed[_flattenKeyStr];
         const handleCollapse = this.handleCollapse.bind(
           this, _flattenKeyStr
         );
